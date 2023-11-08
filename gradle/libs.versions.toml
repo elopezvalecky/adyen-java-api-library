@@ -1,0 +1,28 @@
+[versions]
+gson = "2.10.1"
+gson-fire = "1.9.0"
+httpclient5 = "5.2.1"
+jackson = "2.15.3"
+jakarta-ws-rs_api = "3.1.0"
+jaxb = "2.3.1"
+junit = "4.13.2"
+mockito = "5.7.0"
+okio = "3.6.0"
+swagger-v3 = "2.2.18"
+swagger-annotations = "1.6.12"
+
+[libraries]
+gson = { name = "gson", group = "com.google.code.gson", version.ref = "gson"}
+gson-fire = { name = "gson-fire", group = "io.gsonfire", version.ref = "gson-fire" }
+httpclient5 = { name = "httpclient5", group = "org.apache.httpcomponents.client5", version.ref = "httpclient5" }
+jackson-datatype-jsr310 = { name = "jackson-datatype-jsr310", group = "com.fasterxml.jackson.datatype", version.ref = "jackson" }
+jackson-databind = { name = "jackson-databind", group = "com.fasterxml.jackson.core", version.ref = "jackson" }
+jakarta-ws-rs-api = { name = "jakarta.ws.rs-api", group = "jakarta.ws.rs", version.ref = "jakarta-ws-rs_api" }
+jaxb-api = { name = "jaxb-api", group = "javax.xml.bind", version.ref = "jaxb" }
+junit = { name = "junit", group = "junit", version.ref = "junit" }
+mockito-core = { name = "mockito-core", group = "org.mockito", version.ref = "mockito" }
+okio = { name = "okio", group = "com.squareup.okio", version.ref = "okio" }
+swagger-annotations = { name = "swagger-annotations", group = "io.swagger", version.ref = "swagger-annotations" }
+swagger-v3-annotations = { name = "swagger-annotations", group = "io.swagger.core.v3", version.ref = "swagger-v3" }
+
+[plugins]
