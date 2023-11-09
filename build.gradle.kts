@@ -1,4 +1,5 @@
 plugins {
+    checkstyle
     java
     jacoco
 }
@@ -22,6 +23,14 @@ dependencies {
     testImplementation(libs.mockito.core)
 }
 
+checkstyle {
+    toolVersion = "9.3"
+    configFile = file(layout.projectDirectory.file("checkstyle.xml"))
+    configProperties =  mapOf(
+        "suppressionsFile" to file(layout.projectDirectory.file("checkstyle-suppressions.xml"))
+    )
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
@@ -35,6 +44,10 @@ jacoco {
 tasks {
     withType<JavaCompile> {
         options.encoding = "UTF-8"
+    }
+    // It reports too many errors compared with maven, but actually I think in maven it does not check test
+    checkstyleTest {
+        enabled = false
     }
     test {
     }

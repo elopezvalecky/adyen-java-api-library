@@ -39,6 +39,11 @@
         <property name="basedir" value="${basedir}"/>
     -->
 
+    <module name="SuppressionFilter">
+        <property name="file" value="${suppressionsFile}"/>
+        <property name="optional" value="false"/>
+    </module>
+
     <property name="fileExtensions" value="java, properties, xml"/>
 
     <!-- Ignore generated models -->
