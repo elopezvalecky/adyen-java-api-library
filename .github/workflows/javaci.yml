@@ -17,4 +17,4 @@ jobs:
           distribution: adopt
           cache: gradle
       - name: Run the tests with Gradle
-        run: ./gradlew clean build -Porg.gradle.console=verbose --no-daemon
+        run: ./gradlew clean build --console=plain --no-daemon
