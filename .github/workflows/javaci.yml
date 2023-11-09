@@ -12,10 +12,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Set up JDK ${{ matrix.Java }}
         uses: actions/setup-java@v3
-
         with:
           java-version: ${{ matrix.java }}
-          distribution: 'adopt'
-          
+          distribution: adopt
+          cache: gradle
       - name: Run the tests with Gradle
-        run: ./gradlew clean build -Porg.gradle.console=verbose
+        run: ./gradlew clean build -Porg.gradle.console=verbose --no-daemon
