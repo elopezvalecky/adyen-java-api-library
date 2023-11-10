@@ -75,6 +75,7 @@ publishing {
             }
         }
     }
+    // To not push anything to Maven Central
     repositories {
         maven {
             url = uri(layout.buildDirectory.dir("staging-deploy"))
@@ -82,6 +83,6 @@ publishing {
     }
 }
 
-//signing {
-//    sign(publishing.publications["maven"])
-//}
+signing {
+    sign(publishing.publications["maven"])
+}
