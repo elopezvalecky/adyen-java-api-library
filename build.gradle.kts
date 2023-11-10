@@ -32,7 +32,7 @@ dependencies {
 
 publishing {
     publications {
-        with(maybeCreate<MavenPublication>("maven")) {
+        withType<MavenPublication>() {
             pom {
                 developers {
                     developer {
@@ -41,7 +41,7 @@ publishing {
                     }
                 }
                 scm {
-                    connection = "scm:git:git@github.com:Adyen/adyen-java-api-library.git"
+                    connection = "scm:git:https://github.com/elopezvalecky/adyen-java-api-library.git"
                     developerConnection = "scm:git:git@github.com:Adyen/adyen-java-api-library.git"
                     url = project.providers.gradleProperty("url")
                 }
