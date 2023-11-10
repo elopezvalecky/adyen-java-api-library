@@ -9,6 +9,8 @@ plugins {
     // I would like to use latest 7.0.0, but it requires minimum version of jvm to be 17
     // but since 11 still the minimum, then this version must be use
     id("biz.aQute.bnd.builder") version "6.4.0"
+
+    id("com.github.kt3k.coveralls") version "2.12.2"
 }
 
 repositories {
@@ -56,6 +58,12 @@ tasks {
             bnd(mapOf(
                 "Export-Package" to "com.adyen"
             ))
+        }
+    }
+    jacocoTestReport {
+        reports {
+            xml.required = true // coveralls plugin depends on xml format report
+            html.required = false
         }
     }
     // Shortcut to quickly update gradle version and wrapper as needed

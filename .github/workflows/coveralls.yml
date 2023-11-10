@@ -16,5 +16,7 @@ jobs:
           distribution: 'adopt'
       - name: Build & Test
         run: ./gradlew clean build jacocoTestReport --console=plain --no-daemon
-#      - name: Coveralls Coverage Report Submission
-#        run: mvn coveralls:report --define repoToken=${{ secrets.COVERALL_REPO_TOKEN }}
+      - name: Coveralls Coverage Report Submission
+        run: ./gradlew coveralls --console=plain --no-daemon
+        env:
+          COVERALL_REPO_TOKEN: ${{ secrets.COVERALL_REPO_TOKEN }}
