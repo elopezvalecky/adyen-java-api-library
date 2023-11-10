@@ -1,3 +1,5 @@
+import com.adyen.gradle.OpenApiGeneratorAuthorTemplateTask
+
 plugins {
     // This plugin is defined as include build, but it could actually be externalized as plugin
     // if there are common parts of it that can be re-used across other projects
@@ -61,4 +63,18 @@ tasks {
         gradleVersion = "latest"
         distributionType = Wrapper.DistributionType.BIN
     }
+
+    // --------------------
+    // Makefile alternative
+    val authorTemplate = register<OpenApiGeneratorAuthorTemplateTask>("author-templates") {
+        group = "OpenAPI Tools"
+        generator = "java"
+        library = "jersey3"
+        output = layout.buildDirectory.dir("templates")
+    }
+    register("openapi-generator") {
+        dependsOn(authorTemplate)
+    }
+    // --------------------
+
 }
