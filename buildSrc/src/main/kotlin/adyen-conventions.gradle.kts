@@ -1,3 +1,9 @@
+/*
+ * Adyen's Conventions
+ * Set of common and default configuration applicable out of the box for any Gradle project under Adyen's ecosystems.
+ *
+ * TODO: For real re-use into many other projects/repositories this should be externalized as Gradle Plugin in a separate repository
+ */
 plugins {
     checkstyle
     `java-library`
