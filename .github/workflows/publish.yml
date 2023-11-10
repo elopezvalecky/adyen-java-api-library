@@ -16,7 +16,7 @@ jobs:
         java-version: '11'
 
     - name: Build with Gradle
-      run: ./gradlew clean build publish --console=plain --no-daemon
+      run: ./gradlew clean build --console=plain --no-daemon
       
 #    - name: Set up Apache Maven Central
 #      uses: actions/setup-java@v3
@@ -29,8 +29,8 @@ jobs:
 #        gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
 #        gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
 #
-#    - name: Publish to Apache Maven Central
-#      run: mvn deploy
+    - name: Publish to Apache Maven Central
+      run: ./gradlew publish
 #      env:
 #        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME}}
 #        MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_TOKEN }}
