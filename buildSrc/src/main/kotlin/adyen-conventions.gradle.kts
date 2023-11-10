@@ -19,7 +19,7 @@ checkstyle {
 }
 
 jacoco {
-    version = "0.8.11"
+    toolVersion = "0.8.11"
 }
 
 java {
