@@ -145,9 +145,12 @@
                 <version>3.3.1</version>
                 <configuration>
                     <configLocation>checkstyle.xml</configLocation>
-                    <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
+                    <!--<suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>-->
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
+                    <propertyExpansion>
+                        suppressionsFile=${project.basedir}/checkstyle-suppressions.xml
+                    </propertyExpansion>
                 </configuration>
                 <executions>
                     <execution>
