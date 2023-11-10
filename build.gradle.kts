@@ -1,7 +1,12 @@
 plugins {
-    checkstyle
-    java
-    jacoco
+    // This plugin is defined as include build, but it could actually be externalized as plugin
+    // if there are common parts of it that can be re-used across other projects
+    `adyen-conventions`
+
+    // Plugin for BND (OSGI), it is the counterpart for the maven-bundle-plugin
+    // I would like to use latest 7.0.0, but it requires minimum version of jvm to be 17
+    // but since 11 still the minimum, then this version must be use
+    id("biz.aQute.bnd.builder") version "6.4.0"
 }
 
 repositories {
@@ -9,52 +14,49 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.gson)
-    implementation(libs.gson.fire)
-    implementation(libs.jackson.databind)
-    implementation(libs.jackson.datatype.jsr310)
-    implementation(libs.jakarta.ws.rs.api)
-    implementation(libs.jaxb.api)
-    implementation(libs.httpclient5)
-    implementation(libs.okio)
-    implementation(libs.swagger.annotations)
-    implementation(libs.swagger.v3.annotations)
+    api(libs.gson)
+    api(libs.gson.fire)
+    api(libs.jackson.databind)
+    api(libs.jackson.datatype.jsr310)
+    api(libs.jakarta.ws.rs.api)
+    api(libs.jaxb.api)
+    api(libs.httpclient5)
+    api(libs.okio)
+    api(libs.swagger.annotations)
+    api(libs.swagger.v3.annotations)
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
 }
 
-checkstyle {
-    toolVersion = "9.3"
-    configFile = file(layout.projectDirectory.file("checkstyle.xml"))
-    configProperties =  mapOf(
-        "suppressionsFile" to file(layout.projectDirectory.file("checkstyle-suppressions.xml"))
-    )
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-
-}
-
-jacoco {
-    version = "0.8.11"
+publishing {
+    publications {
+        with(maybeCreate<MavenPublication>("maven")) {
+            pom {
+                developers {
+                    developer {
+                        name = "Esteban"
+                        timezone = "Europe/Amsterdam"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git@github.com:Adyen/adyen-java-api-library.git"
+                    developerConnection = "scm:git:git@github.com:Adyen/adyen-java-api-library.git"
+                    url = project.providers.gradleProperty("url")
+                }
+            }
+        }
+    }
 }
 
 tasks {
-    withType<JavaCompile> {
-        options.encoding = "UTF-8"
+    jar {
+        bundle {
+            bnd(mapOf(
+                "Export-Package" to "com.adyen"
+            ))
+        }
     }
-    // It reports too many errors compared with maven, but actually I think in maven it does not check test
-    checkstyleTest {
-        enabled = false
-    }
-    test {
-    }
-    // Shortcut to quickly update gradle version and wrapper as needed via
-    // - `gradle wrapper`
-    // OR
-    // - `./gradlew wrapper`
+    // Shortcut to quickly update gradle version and wrapper as needed
     wrapper {
         gradleVersion = "latest"
         distributionType = Wrapper.DistributionType.BIN
