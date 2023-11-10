@@ -15,6 +15,7 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+          cache: 'gradle'
       - name: Build & Test
         run: ./gradlew clean build jacocoTestReport --console=plain --no-daemon
       - name: Coveralls Coverage Report Submission
