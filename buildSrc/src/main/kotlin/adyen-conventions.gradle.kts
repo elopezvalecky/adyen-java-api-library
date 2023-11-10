@@ -45,11 +45,6 @@ tasks {
         options.source = JavaVersion.VERSION_1_8.toString()
         options.encoding = "UTF-8"
     }
-    withType<Jar> {
-        if (name == "javadocJar" || name == "sourcesJar") {
-            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-        }
-    }
     withType<Test> {
         jvmArgs = listOf("-Duser.country=US", "-Duser.language=en")
     }
@@ -59,14 +54,6 @@ publishing {
     publications {
         register<MavenPublication>("maven") {
             from(components["java"])
-//            versionMapping {
-//                usage("java-api") {
-//                    fromResolutionResult()
-//                }
-//                usage("java-runtime") {
-//                    fromResolutionResult()
-//                }
-//            }
             pom {
                 name = project.providers.gradleProperty("title")
                 description = project.providers.gradleProperty("description")
