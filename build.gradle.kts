@@ -11,6 +11,7 @@ plugins {
     id("biz.aQute.bnd.builder") version "6.4.0"
 
     id("com.github.kt3k.coveralls") version "2.12.2"
+    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
 }
 
 repositories {
@@ -48,6 +49,15 @@ publishing {
                     url = project.providers.gradleProperty("url")
                 }
             }
+        }
+    }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            username = providers.environmentVariable("SONATYPE_USERNAME").orNull
+            password = providers.environmentVariable("SONATYPE_PASSWORD").orNull
         }
     }
 }
