@@ -5,4 +5,5 @@
 5. Sonatype (Maven Central) credentials are configure and correct if changes were to be merge back into origin project
 6. GPG credentials for artifact signing are configure and correct if changes were to be merge back into origin project
 7. All previous build tools configuration has been retained and are functional for the purpose of side by side comparison
-8. 
+8. Everything else in the project like the README.md, java classes and so on, are retained as it is, as those are not actually part of the scope of the assigment.
+9. 
