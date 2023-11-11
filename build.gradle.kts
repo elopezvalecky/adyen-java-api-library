@@ -84,14 +84,18 @@ tasks {
 
     // --------------------
     // Makefile alternative
-    val authorTemplate = register<OpenApiGeneratorAuthorTemplateTask>("author-templates") {
-        group = "OpenAPI Tools"
+
+    // alt to: make templates
+    val authorTemplate = register<OpenApiGeneratorAuthorTemplateTask>("openapiAuthorTemplates") {
+        group = "Adyen OpenAPI Tools"
         generator = "java"
         library = "jersey3"
         output = layout.buildDirectory.dir("templates")
     }
-    register("openapi-generator") {
-        dependsOn(authorTemplate)
+    // alt to: make
+    register("openapiGenerator") {
+        group = "Adyen OpenAPI Tools"
+        dependsOn(authorTemplate, models)
     }
     // --------------------
 
