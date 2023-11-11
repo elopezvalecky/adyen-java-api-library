@@ -89,6 +89,9 @@ publishing {
     }
 }
 
-signing {
-    sign(publishing.publications["maven"])
+if (providers.environmentVariable("CI").getOrElse("false").toBoolean()) {
+    signing {
+        useInMemoryPgpKeys(providers.environmentVariable("GPG_PRIVATE_KEY").get(), providers.environmentVariable("GPG_PASSPHRASE").get())
+        sign(publishing.publications["maven"])
+    }
 }
