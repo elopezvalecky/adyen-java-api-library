@@ -89,12 +89,9 @@ publishing {
     }
 }
 
-// Disabled due to not secrets configured on fork
-/*
-if (providers.environmentVariable("CI").getOrElse("false").toBoolean()) {
+if (providers.environmentVariable("GPG_PRIVATE_KEY").isPresent) {
     signing {
         useInMemoryPgpKeys(providers.environmentVariable("GPG_PRIVATE_KEY").get(), providers.environmentVariable("GPG_PASSPHRASE").get())
         sign(publishing.publications["maven"])
     }
 }
-*/
