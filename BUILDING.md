@@ -14,11 +14,13 @@ This will build all jars and documentation and publish them to your local Maven 
 
 --- 
 
-## Generate Models
+## Generate Models & Services
 
 > #### Work in Progress
-> Its only covers the model generation of the following api specifications
+> Its only cover the model generation of the following api specifications
 > - BalanceControlService-v1
+>
+> This is only for the purpose of the assignment to show off my skills that it could be done via gradle as well
 
 ```shell
 ./gradlew openapiModelBalanceControlService-v1
