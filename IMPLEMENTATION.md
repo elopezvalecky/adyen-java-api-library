@@ -21,3 +21,9 @@ Configurations has been split in 3 parts
 3. **adyen-openapi-generator.gradle.kts** : For the purpose to have clean code and a bit more organized, everything that is related to the generation of the models and services from api specs has been implemented as include build plugin to keep the build.gradle.kts short and clean.
     - It contains a bunch of gradle task definition for the purpose of mimic what has been done in the Makefile
 
+
+## To Do
+
+- _Release process_ 
+  
+   I believe it has some room for improvements or at least a different technique can be use like JReleaser. But since it is done by the use of another Adyen project located in a different repo I decided to not waste the time on it trying to understand how the process is, also because it looks like this current project is use in production, so I wanted to minimize risk of breaking something.
