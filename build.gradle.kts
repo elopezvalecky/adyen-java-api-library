@@ -1,4 +1,5 @@
 import com.adyen.gradle.OpenApiGeneratorAuthorTemplateTask
+import com.adyen.gradle.OpenApiGeneratorCloneSpec
 
 plugins {
     // This plugin is defined as include build, but it could actually be externalized as plugin
@@ -91,6 +92,12 @@ tasks {
         generator = "java"
         library = "jersey3"
         output = layout.buildDirectory.dir("templates")
+    }
+    // alt to: make target/spec
+    val cloneSpec = register<OpenApiGeneratorCloneSpec>("openapiCloneSpec") {
+        group = "Adyen OpenAPI Tools"
+        apiSpecRepo = "https://github.com/Adyen/adyen-openapi.git"
+        target = layout.buildDirectory.dir("spec")
     }
     // alt to: make
     register("openapiGenerator") {
